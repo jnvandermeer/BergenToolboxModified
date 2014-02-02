@@ -2469,18 +2469,20 @@ selection = questdlg2([10, 'Are you sure you want to Apply the Correction?', 10,
                     % if we have carbonwires 1 and 2 (CW1 * CW2), find out
                     % their indices... and filter that, as well!
                     
-                        do_additional_channels = [];
-                        for i_ch=1:numel(EEG.chanlocs)
-                            if sum(strcmp(EEG.chanlocs(i_ch).labels,{'CW1','CW 1','CW2','CW 2'}))>0
-                                do_additional_channels(end+1) = i_ch;
-                            end
-                        end
-
-                        for i_ch=1:numel(do_additional_channels)
-                            newvec=eegfilt(EEG.data(do_additional_channels(i_ch),:),EEG.srate,0,70);
-                            EEG.data(do_additional_channels(i_ch),:)=newvec;
-                            fprintf('did 70 Hz low-pass on channel %s.\n',EEG.chanlocs(do_additional_channels(i_ch)).labels);
-                        end
+                    % do NOT do additional filtering -- instead, maybe
+                    % build this into the CW Regr Toolbox.
+%                         do_additional_channels = [];
+%                         for i_ch=1:numel(EEG.chanlocs)
+%                             if sum(strcmp(EEG.chanlocs(i_ch).labels,{'CW1','CW 1','CW2','CW 2'}))>0
+%                                 do_additional_channels(end+1) = i_ch;
+%                             end
+%                         end
+% 
+%                         for i_ch=1:numel(do_additional_channels)
+%                             newvec=eegfilt(EEG.data(do_additional_channels(i_ch),:),EEG.srate,0,70);
+%                             EEG.data(do_additional_channels(i_ch),:)=newvec;
+%                             fprintf('did 70 Hz low-pass on channel %s.\n',EEG.chanlocs(do_additional_channels(i_ch)).labels);
+%                         end
                         
                         % is there an ecg channel (do that @ 100 Hz...)?
                         check_ecg = find(strcmpi({EEG.chanlocs.labels},'ecg'));
