@@ -2480,7 +2480,7 @@ selection = questdlg2([10, 'Are you sure you want to Apply the Correction?', 10,
 			% but... this should really go into the CW Regression Toolbox!!
 			disp('CW Regression -->');
                         disp(do_additional_channels);                        
-			do_additional_channels=[];
+
 
                     % if we have carbonwires 1 and 2 (CW1 * CW2), find out
                     % their indices... and filter that, as well!
