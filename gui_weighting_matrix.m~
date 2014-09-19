@@ -2502,7 +2502,6 @@ switch selection,
                     
                     % is there an ecg channel (do that @ 100 Hz...)?
                     check_ecg = find(strcmpi({EEG.chanlocs.labels},'ecg'));
-		    check_ecg = [];
                     for i_ecg=1:numel(check_ecg)
                         newvec=eegfilt(EEG.data(check_ecg(i_ecg),:),EEG.srate,0,100);
                         EEG.data(check_ecg(i_ecg),:)=newvec;
